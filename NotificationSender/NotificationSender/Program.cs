@@ -70,7 +70,7 @@ namespace NotificationSender
         {
             try
             {
-                var data = new
+                var dat = new
                 {
                     to = TokenId,
                     notification = new
@@ -80,7 +80,7 @@ namespace NotificationSender
                         sound = "Enabled"
                     }
                 };
-                send(data);
+                send(dat);
                 
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace NotificationSender
                 var data = new
                 {
                     to = "/topics/"+Topic,
-                    notification = new
+                    data = new
                     {
                         body = Message,
                         title = Title,

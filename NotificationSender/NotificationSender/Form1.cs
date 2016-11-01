@@ -17,18 +17,12 @@ namespace NotificationSender
 	public partial class Form1 : Form
 	{
 		string[] reg_ids;
-		int n;
 		DataGridView Dat1 = new DataGridView();
 		public Form1()
 		{
 			InitializeComponent();
 		}
 
-		private void Topic_CheckedChanged(object sender, EventArgs e)
-		{
-			tableLayoutPanel1.Visible = true;
-
-		}
 
 		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
 		{
@@ -100,6 +94,14 @@ namespace NotificationSender
 			reg_ids = tokens;
 			Program.sendToFew(reg_ids, textBox6.Text, textBox5.Text);
 		
+		}
+
+		private void Topic_CheckedChanged_1(object sender, EventArgs e)
+		{
+			if (Topic.Checked)
+				tableLayoutPanel1.Visible = true;
+			else
+				tableLayoutPanel1.Visible = false;
 		}
 	}
 }
