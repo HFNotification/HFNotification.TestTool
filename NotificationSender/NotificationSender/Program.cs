@@ -62,21 +62,17 @@ namespace NotificationSender
             {
                 MessageBox.Show(ex.Message);
             }
-}
-  
-        
-        
-        public static void sendToOne(string TokenId, string Message, string Title)
+}       
+       public static void SendToOne(string TokenId, string Message, string Title)
         {
             try
             {
                 var dat = new
                 {
                     to = TokenId,
-                    notification = new
+                    data = new
                     {
-                        body = Message,
-                        title =Title ,
+                        msg = Message,
                         sound = "Enabled"
                     }
                 };
@@ -88,17 +84,17 @@ namespace NotificationSender
                 MessageBox.Show(ex.Message);
             }          
         }
-        public static void sendToTopic(string Topic, string Message, string Title)
+        public static void SendToTopic(string topic, string message, string titles)
         {
             try
             {
                 var data = new
                 {
-                    to = "/topics/"+Topic,
+                    to = "/topics/"+topic,
                     data = new
                     {
-                        body = Message,
-                        title = Title,
+                        body = message,
+                        title = titles,
                         sound = "Enabled"
                     }
                 };
@@ -109,9 +105,8 @@ namespace NotificationSender
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-        public static void sendToFew(string[] tokens, string Message, string Title)
+        public static void sendToFew(string[] tokens, string message, string titles)
         {
             try
             {
@@ -121,13 +116,12 @@ namespace NotificationSender
                     priority = "high",
                     notification = new
                     {
-                        title = Title,
-                        body = Message,
+                        title = titles,
+                        body = message,
 						sound = "Enabled"
 					}
                 };
                 send(data);
-
             }
             catch (Exception ex)
             {

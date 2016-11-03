@@ -22,42 +22,32 @@ namespace NotificationSender
 		{
 			InitializeComponent();
 		}
-
-
-		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
 		private void button2_Click(object sender, EventArgs e)
 		{
 			Topic.Visible = true;
-			tableLayoutPanel3.Visible = true;
-			tableLayoutPanel1.Visible = false;
-			tableLayoutPanel2.Visible = false;
+			tableLayoutCountAddressee.Visible = true;
+			tableLayoutToTopic.Visible = false;
+			tableLayoutToOne.Visible = false;
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			int n = int.Parse(textBox4.Text);
-			
+			int n = int.Parse(textBox4.Text);		
 			Dat1.RowCount = n;
 			Dat1.ColumnCount = 1;
 			Dat1.Columns[0].HeaderText = "Token ID";
 			Dat1.Location = new Point(0, textBox6.Location.Y + textBox6.Height + 10);
 			this.Controls.Add(Dat1);
 			Dat1.Width = 500;
-			// Dat1.Height = n * 30;
 			Dat1.Columns[0].Width = 480;
-			// Dat1.Rows[0].HeaderCell.Value = n.ToString();
 			for (int i = 1; i <= n; i++)
 			{
 				Dat1.Rows[(i - 1)].HeaderCell.Value = i.ToString();
 			}
-			tableLayoutPanel5.Visible = false;
-			tableLayoutPanel3.Visible = false;
-			tableLayoutPanel1.Visible = false;
-			tableLayoutPanel4.Visible = true;
+			tableLayoutStart.Visible = false;
+			tableLayoutCountAddressee.Visible = false;
+			tableLayoutToTopic.Visible = false;
+			tableLayoutForFew.Visible = true;
 			Topic.Visible = false;
 
 			Dat1.Show();
@@ -66,20 +56,20 @@ namespace NotificationSender
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			tableLayoutPanel2.Visible = true;
+			tableLayoutToOne.Visible = true;
 			Topic.Visible = false;
 
-			tableLayoutPanel3.Visible = false;
+			tableLayoutCountAddressee.Visible = false;
 		}
 
 		private void button6_Click(object sender, EventArgs e)
 		{
-			Program.sendToOne(textBox9.Text, textBox7.Text, textBox8.Text);
+			Program.SendToOne(textBox9.Text, textBox7.Text, textBox8.Text);
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			Program.sendToTopic(textBox2.Text, textBox1.Text, textBox3.Text);
+			Program.SendToTopic(textBox2.Text, textBox1.Text, textBox3.Text);
 		}
 
 		private void button5_Click(object sender, EventArgs e)
@@ -99,9 +89,9 @@ namespace NotificationSender
 		private void Topic_CheckedChanged_1(object sender, EventArgs e)
 		{
 			if (Topic.Checked)
-				tableLayoutPanel1.Visible = true;
+				tableLayoutToTopic.Visible = true;
 			else
-				tableLayoutPanel1.Visible = false;
+				tableLayoutToTopic.Visible = false;
 		}
 	}
 }
